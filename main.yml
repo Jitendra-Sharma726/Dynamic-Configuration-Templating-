@@ -1,0 +1,11 @@
+---
+- name: Dynamic Configuration Templating
+  hosts: webservers
+  gather_facts: false
+
+  tasks:
+    - name: Deploy dynamic Spring Boot configuration
+      ansible.builtin.template:
+        src: application.properties.j2
+        dest: "/var/www/{{ tier }}/config/application.properties"
+        mode: '0644'
